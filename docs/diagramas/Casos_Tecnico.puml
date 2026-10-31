@@ -1,0 +1,27 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam classAttributeIconSize 0
+skinparam dpi 180
+left to right direction
+title Casos de uso - Tecnico
+actor "Tecnico" as A
+rectangle TecnoTurno {
+usecase "Iniciar y cerrar sesion" as UC0
+usecase "Consultar ordenes asignadas" as UC1
+usecase "Filtrar mis ordenes" as UC2
+usecase "Actualizar diagnostico y costo" as UC3
+usecase "Cambiar estado y registrar nota" as UC4
+usecase "Consultar historial y panel" as UC5
+}
+A -- UC0
+A -- UC1
+A -- UC2
+A -- UC3
+A -- UC4
+A -- UC5
+note bottom of A : Precondicion de los casos de negocio: sesion activa.
+@enduml

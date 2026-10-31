@@ -1,0 +1,73 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam classAttributeIconSize 0
+skinparam dpi 180
+title TecnoTurno - Clases del dominio y servicio
+class Usuario {
+ - id : Long
+ - nombre : String
+ - documento : String
+ - email : String
+ - telefono : String
+ - password : String
+ - rol : Rol
+ - activo : boolean
+}
+class Equipo {
+ - id : Long
+ - tipo : String
+ - marca : String
+ - modelo : String
+ - serial : String
+ - accesorios : String
+}
+class OrdenServicio {
+ - id : Long
+ - estado : Estado
+ - falla : String
+ - diagnostico : String
+ - costo : BigDecimal
+ - creada : LocalDateTime
+ - actualizada : LocalDateTime
+ - version : Long
+}
+class HistorialEstado {
+ - id : Long
+ - estado : Estado
+ - nota : String
+ - fecha : LocalDateTime
+}
+class TallerService {
+ + crear(form, actor) : OrdenServicio
+ + actualizar(id, form, actor) : void
+ + listar(usuario, filtro, estado) : List
+ + visible(orden, usuario) : boolean
+}
+enum Rol {
+ ADMIN
+ TECNICO
+ CLIENTE
+}
+enum Estado {
+ RECIBIDO
+ EN_DIAGNOSTICO
+ EN_REPARACION
+ LISTO
+ ENTREGADO
+ CANCELADO
+ + permite(siguiente) : boolean
+}
+Usuario "1" -- "0..*" Equipo : propietario
+Usuario "1" -- "0..*" OrdenServicio : tecnico
+Equipo "1" -- "0..*" OrdenServicio
+OrdenServicio "1" -- "1..*" HistorialEstado
+Usuario "1" -- "0..*" HistorialEstado : responsable
+Usuario ..> Rol
+OrdenServicio ..> Estado
+TallerService ..> OrdenServicio
+TallerService ..> HistorialEstado
+@enduml

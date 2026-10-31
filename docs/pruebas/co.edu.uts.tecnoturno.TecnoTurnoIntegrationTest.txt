@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: co.edu.uts.tecnoturno.TecnoTurnoIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.88 s -- in co.edu.uts.tecnoturno.TecnoTurnoIntegrationTest

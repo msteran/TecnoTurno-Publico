@@ -1,0 +1,20 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam classAttributeIconSize 0
+skinparam dpi 180
+title Ciclo de una orden de servicio
+[*] --> RECIBIDO
+RECIBIDO --> EN_DIAGNOSTICO
+EN_DIAGNOSTICO --> EN_REPARACION
+EN_REPARACION --> LISTO
+LISTO --> ENTREGADO
+RECIBIDO --> CANCELADO
+EN_DIAGNOSTICO --> CANCELADO
+EN_REPARACION --> CANCELADO
+ENTREGADO --> [*]
+CANCELADO --> [*]
+@enduml

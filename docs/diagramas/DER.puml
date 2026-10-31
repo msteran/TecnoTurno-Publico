@@ -1,0 +1,63 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam classAttributeIconSize 0
+skinparam dpi 180
+title TecnoTurno - Diagrama entidad relacion
+hide methods
+entity usuarios {
+ * id : BIGINT <<PK>>
+ --
+ nombre : VARCHAR(100)
+ documento : VARCHAR(20) <<UQ>>
+ email : VARCHAR(120) <<UQ>>
+ telefono : VARCHAR(20)
+ password : VARCHAR(100)
+ rol : VARCHAR(15)
+ activo : BOOLEAN
+}
+entity equipos {
+ * id : BIGINT <<PK>>
+ --
+ cliente_id : BIGINT <<FK>>
+ tipo : VARCHAR(50)
+ marca : VARCHAR(50)
+ modelo : VARCHAR(80)
+ serial : VARCHAR(80) <<UQ>>
+ accesorios : VARCHAR(300)
+}
+entity ordenes {
+ * id : BIGINT <<PK>>
+ --
+ equipo_id : BIGINT <<FK>>
+ tecnico_id : BIGINT <<FK>>
+ estado : VARCHAR(25)
+ falla : VARCHAR(1000)
+ diagnostico : VARCHAR(2000)
+ costo : DECIMAL(12,2)
+ creada : DATETIME(6)
+ actualizada : DATETIME(6)
+ version : BIGINT
+}
+entity historial {
+ * id : BIGINT <<PK>>
+ --
+ orden_id : BIGINT <<FK>>
+ responsable_id : BIGINT <<FK>>
+ estado : VARCHAR(25)
+ nota : VARCHAR(1000)
+ fecha : DATETIME(6)
+}
+usuarios ||--o{ equipos : propietario
+usuarios ||--o{ ordenes : tecnico
+equipos ||--o{ ordenes : reparaciones
+ordenes ||--|{ historial : eventos
+usuarios ||--o{ historial : responsable
+note bottom of historial
+Una orden tiene al menos un evento por regla de aplicacion.
+La FK por si sola no impone ese minimo.
+end note
+@enduml

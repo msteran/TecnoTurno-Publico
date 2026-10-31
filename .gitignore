@@ -1,0 +1,10 @@
+target/
+data/
+.metadata/
+.settings/
+.classpath
+.project
+.env
+*.log
+
+ejecutable/*.jar

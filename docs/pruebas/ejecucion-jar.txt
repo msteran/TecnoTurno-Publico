@@ -1,0 +1,2 @@
+Executable JAR: startup and real HTTP login passed; existing H2 upgraded to 25 orders
+Persistent H2: restart passed, still 25 orders without duplication

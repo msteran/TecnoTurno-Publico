@@ -1,0 +1,33 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam classAttributeIconSize 0
+skinparam dpi 180
+left to right direction
+title Casos de uso - Administrador
+actor "Administrador" as A
+rectangle TecnoTurno {
+usecase "Iniciar y cerrar sesion" as UC0
+usecase "Gestionar usuarios" as UC1
+usecase "Registrar y editar equipos" as UC2
+usecase "Eliminar equipo sin ordenes" as UC3
+usecase "Registrar orden y asignar tecnico" as UC4
+usecase "Consultar y filtrar ordenes" as UC5
+usecase "Actualizar diagnostico y costo" as UC6
+usecase "Cambiar estado y registrar nota" as UC7
+usecase "Consultar historial y panel" as UC8
+}
+A -- UC0
+A -- UC1
+A -- UC2
+A -- UC3
+A -- UC4
+A -- UC5
+A -- UC6
+A -- UC7
+A -- UC8
+note bottom of A : Precondicion de los casos de negocio: sesion activa.
+@enduml
