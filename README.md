@@ -1,5 +1,7 @@
 # TecnoTurno
 
+**Autores:** Manuel Santiago Terán Suárez y Harvic Edisson Quintero Cáceres.
+
 Proyecto académico de gestión de reparaciones para un taller tecnológico. La aplicación registra equipos y órdenes de servicio, asigna técnicos y conserva el historial de cada reparación.
 
 ## Perfiles
